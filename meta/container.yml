@@ -1,4 +1,4 @@
-rabbitmq-container:
+rabbitmq:
   image: centos:7
   ports:
     - 5672:5672
