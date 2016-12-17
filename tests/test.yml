@@ -1,5 +1,26 @@
 ---
 - hosts: localhost
-  remote_user: root
-  roles:
-    - rabbitmq-container
+  gather_facts: no
+  connection: local
+  vars:
+    docker_host: 0.0.0.0
+  tasks:
+
+  - name: Wait for RabbitMQ to be ready
+    wait_for:
+      host: "{{ docker_host }}"
+      port: 5672
+      delay: 5
+      timeout: 20
+
+  - name: Query the RabbitMQ cluster status
+    raw: docker exec `docker ps | grep ansible_rabbitmq_1 | awk '{print $1}'` rabbitmqctl cluster_status
+    register: output
+
+  - name: Show output
+    debug:
+      var: output
+
+  - name: Should see 'done' in output
+    assert:
+      that: "'done' in output.content"
