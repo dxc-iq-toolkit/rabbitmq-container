@@ -1,7 +1,7 @@
 rabbitmq:
   image: centos:7
   ports:
-    - 5672:{{ port }}
+    - 5672:5672
   environment:
     RABBITMQ_DEFAULT_USER: rabbitmq
     RABBITMQ_GROUP: rabbitmq
