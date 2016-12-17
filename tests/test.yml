@@ -20,7 +20,3 @@
   - name: Show output
     debug:
       var: output
-
-  - name: Should see 'done' in output
-    assert:
-      that: "'done' in output.stdout_lines"
