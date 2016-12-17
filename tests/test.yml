@@ -14,7 +14,7 @@
       timeout: 20
 
   - name: Query the RabbitMQ cluster status
-    raw: docker exec `docker ps | grep ansible_rabbitmq_1 | awk '{print $1}'` rabbitmqctl cluster_status
+    raw: docker exec `docker ps | grep rabbitmq | awk '{print $1}'` rabbitmqctl cluster_status
     register: output
 
   - name: Show output
