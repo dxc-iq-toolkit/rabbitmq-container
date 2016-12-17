@@ -30,7 +30,7 @@ Dependencies
 
 None
 
-Example run
+Example playbook
 ----------------
 
 Run the following commands to install the service
@@ -40,7 +40,14 @@ Run the following commands to install the service
 $ cd myproject
 
 # Install the service
-$ ansible-container install bingoarun.rabbitmq-container-role
+$ ansible-container install bingoarun.rabbitmq-container
+```
+
+
+```
+- hosts: server
+  roles:
+    - { role: bingoarun.rabbitmq-container }
 ```
 
 License
