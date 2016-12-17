@@ -23,4 +23,4 @@
 
   - name: Should see 'done' in output
     assert:
-      that: "'done' in output.content"
+      that: "'done' in output.stdout_lines"
