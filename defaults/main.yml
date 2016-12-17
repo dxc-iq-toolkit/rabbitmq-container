@@ -1,0 +1,6 @@
+---
+# defaults file for rabbitmq-container1
+username: rabbitmq
+user_group: rabbitmq
+vhost: my_vhost
+port: 5672

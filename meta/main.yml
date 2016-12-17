@@ -1,0 +1,18 @@
+galaxy_info:
+  author: Arun prasath
+  description: Ansible-container enabled rabbitmq role
+  company: Wanclouds Inc
+  license: MIT
+
+  min_ansible_version: 2.1
+  platforms:
+  - name: EL
+    versions:
+    - 7
+
+  galaxy_tags:
+    - container
+    - rabbitmq
+    - messaging
+
+dependencies: []
