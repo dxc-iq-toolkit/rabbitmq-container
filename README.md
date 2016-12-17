@@ -1,5 +1,6 @@
-Role Name
+RabbitMQ
 =========
+[![Build Status](https://travis-ci.org/bingoarun/rabbitmq-container.svg?branch=master)](https://travis-ci.org/bingoarun/rabbitmq-container) [![Ansible Galaxy](https://img.shields.io/badge/galaxy-rabbitmq--container-blue.svg)](https://galaxy.ansible.com/bingoarun/rabbitmq-container/)
 
 Use this role to add a rabbitmq service to your Ansbile container project.
 
