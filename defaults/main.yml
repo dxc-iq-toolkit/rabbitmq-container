@@ -1,6 +1,11 @@
 ---
 # defaults file for rabbitmq-container1
-username: rabbitmq
-user_group: rabbitmq
-vhost: my_vhost
-port: 5672
+
+port: "{{ RABBITMQ_NODE_PORT | default(5672) }}"
+
+rabbitmq_admin_user: "{{ RABBITMQ_ADMIN_USER | default('admin') }}"
+rabbitmq_admin_password: "{{ RABBITMQ_ADMIN_PASSWORD | default('ChangeMe!') }}"
+
+rabbitmq_application_vhost: "{{ RABBITMQ_DEFAULT_VHOST | default('my_vhost') }}"
+rabbitmq_application_user: "{{ RABBITMQ_DEFAULT_USER | default('rabbitmq') }}"
+rabbitmq_application_password: "{{ RABBITMQ_DEFAULT_PASSWORD | default('rabbitmq') }}"

@@ -4,14 +4,16 @@ RabbitMQ
 
 Use this role to add a rabbitmq service to your Ansbile container project.
 
-
 Role Variables
 --------------
 
 Set the following environment variables in container.yml:
 
 RABBITMQ_DEFAULT_USER
-> RabbitMQ user name. Defaults to `rabbimq`.
+> RabbitMQ user name. Defaults to `rabbitmq`.
+
+RABBITMQ_DEFAULT_PASSWORD
+> RabbitMQ user password. Defaults to `rabbitmq`.
 
 RABBITMQ_GROUP
 > RabbitMQ user group. Defaults to `rabbitmq`.
@@ -22,9 +24,13 @@ RABBITMQ_DEFAULT_VHOST
 RABBITMQ_NODE_PORT
 > RabbitMQ service port number. Defautls to `5672`
 
-The following variables are set in defaults/main.yml and can be overriden at execution time:
+RABBITMQ_ADMIN_USER
+> RabbitMQ administrator user name. Defaults to `admin`.
 
-The same variables are also available in defaults for standalone container execution.
+RABBITMQ_ADMIN_PASSWORD
+> RabbitMQ administrator password. Defaults to `ChangeMe!`.
+
+Equivalent variables are set in defaults/main.yml and can be overriden at execution time.
 
 Dependencies
 ------------

@@ -1,4 +1,5 @@
 ---
+
 - name: Install dumb init
   get_url:
     dest: /usr/bin/dumb-init
@@ -6,11 +7,6 @@
     mode: 0775
     validate_certs: no
 
-- name: Install EPEL
-  yum: name=epel-release state=latest update_cache=yes
-
-- name: Install Erlang
-  yum: name=erlang update_cache=yes
-
-- name: install rabbitmq-server
-  yum: name=rabbitmq-server update_cache=yes
+- name: Enable the RabbitMQ Management Console
+  rabbitmq_plugin: names=rabbitmq_management state=enabled
+  when: enable_mgmt_plugin is defined and enable_mgmt_plugin

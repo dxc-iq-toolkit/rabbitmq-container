@@ -1,4 +1,19 @@
 ---
+
+- include_vars: "/src/{{ item }}"
+  with_items: "{{ vars_files }}"
+  when: vars_files is defined and vars_files
+
+- include_tasks: install-debian.yml
+  when: ansible_os_family == 'Debian'
+
+- include_tasks: install-redhat.yml
+  when: ansible_os_family == 'RedHat'
+
 - include: common.yml
-#- include: users.yml
-#- include: rabbitmq.yml
+
+- name: Template out init script into /usr/bin
+  template:
+    src: init.sh.j2
+    dest: /usr/local/bin/runrabbit
+    mode: 0755

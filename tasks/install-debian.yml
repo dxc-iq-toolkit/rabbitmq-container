@@ -1,0 +1,22 @@
+---
+
+- name: Add the RabbitMQ public GPG key to the apt repo
+  apt_key: url=http://www.rabbitmq.com/rabbitmq-release-signing-key.asc
+           state=present
+
+- name: Add RabbitMQ to the sources list
+  apt_repository: 
+    repo: 'deb http://www.rabbitmq.com/debian/ testing main'
+    update_cache: yes
+    state: present
+
+- name: Install RabbitMQ server
+  apt: 
+    name: rabbitmq-server
+    update_cache: yes
+    force: yes 
+    state: installed
+
+- name: Clean apt cache
+  command: apt-get clean
+  when: ansible_os_family == 'Debian'
