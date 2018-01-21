@@ -31,17 +31,36 @@ script:
   - ansible-container build
 
   # Install the role into the project
-  - echo "Installing and testing git+https://github.com/${TRAVIS_REPO_SLUG},${TRAVIS_COMMIT}"
-  - ansible-container install git+https://github.com/${TRAVIS_REPO_SLUG},${TRAVIS_COMMIT}
+  
+  - echo "Installing and testing git+https://github.com/${TRAVIS_PULL_REQUEST_SLUG:-TRAVIS_REPO_SLUG},${TRAVIS_PULL_REQUEST_SHA:-TRAVIS_COMMIT}"
+  - ansible-container install git+https://github.com/${TRAVIS_PULL_REQUEST_SLUG:-TRAVIS_REPO_SLUG},${TRAVIS_PULL_REQUEST_SHA:-TRAVIS_COMMIT}
 
   # Build the service image
-  - ansible-container build --no-cache
+  - ansible-container build --no-container-cache
 
   # Start the service
   - ansible-container run -d
-  - docker ps
+  - docker ps -a
+  - docker logs tests_rabbitmq-container_1
 
-  # Run tests
+  # Run CentOS tests
+  - ansible-playbook test.yml
+
+  # Stop CentOS environment
+  - ansible-container stop
+  - rm container.yml
+
+  # Copy in Debian container.yml
+  - cp debian-container.yml container.yml
+
+  # Build Debian container
+  - ansible-container build --no-cache
+
+  # Run debian container
+  - ansible-container run -d
+  - docker ps -a
+
+  # Test debian container
   - ansible-playbook test.yml
 
 notifications:
