@@ -41,7 +41,6 @@ script:
   # Start the service
   - ansible-container run -d
   - docker ps -a
-  - docker logs tests_rabbitmq-container_1
 
   # Run CentOS tests
   - ansible-playbook test.yml

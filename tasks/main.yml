@@ -10,7 +10,7 @@
 - include_tasks: install-redhat.yml
   when: ansible_os_family == 'RedHat'
 
-- include: common.yml
+- include_tasks: common.yml
 
 - name: Template out init script into /usr/bin
   template:

@@ -6,4 +6,5 @@ environment:
   RABBITMQ_GROUP: rabbitmq
   RABBITMQ_DEFAULT_VHOST: my_vhost
   RABBITMQ_NODE_PORT: "5672"
-command: ['/usr/bin/dumb-init','rabbitmq']
+entrypoint: ['/usr/local/bin/runrabbit']
+command: []

@@ -23,5 +23,4 @@ rabbitmqctl add_vhost {{ rabbitmq_application_vhost }} ; \
 # Set vhost permissions
 # rabbitmqctl set_permissions -p <vhostname> <username> ".*" ".*" ".*"
 rabbitmqctl set_permissions -p {{ rabbitmq_application_vhost }} {{ rabbitmq_application_user }} ".*" ".*" ".*" ; \
-) &    
-rabbitmq-server $@
+) & /usr/bin/dumb-init rabbitmq-server $@
