@@ -1,0 +1,26 @@
+#!/bin/bash
+
+( sleep 5 ; \
+
+rabbitmqctl start_app \
+
+sleep 5; \
+
+# Create users
+# rabbitmqctl add_user <username> <password>
+rabbitmqctl add_user {{ rabbitmq_admin_user }} {{ rabbitmq_admin_password }} ; \
+
+rabbitmqctl add_user {{ rabbitmq_application_user }} {{ rabbitmq_application_password }} ; \
+
+# Set user rights
+# rabbitmqctl set_user_tags <username> <tag>
+rabbitmqctl set_user_tags {{ rabbitmq_admin_user }} administrator ; \
+
+# Create vhosts
+# rabbitmqctl add_vhost <vhostname>
+rabbitmqctl add_vhost {{ rabbitmq_application_vhost }} ; \
+
+# Set vhost permissions
+# rabbitmqctl set_permissions -p <vhostname> <username> ".*" ".*" ".*"
+rabbitmqctl set_permissions -p {{ rabbitmq_application_vhost }} {{ rabbitmq_application_user }} ".*" ".*" ".*" ; \
+) & /usr/bin/dumb-init rabbitmq-server $@

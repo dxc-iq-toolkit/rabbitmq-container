@@ -1,0 +1,14 @@
+---
+
+- name: Install EPEL
+  yum: name=epel-release state=latest update_cache=yes
+
+- name: Install Erlang
+  yum: name=erlang update_cache=yes
+
+- name: install rabbitmq-server
+  yum: name=rabbitmq-server update_cache=yes
+
+- name: Clean yum cache
+  command: yum clean all
+  when: ansible_os_family == 'RedHat'

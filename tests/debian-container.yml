@@ -1,0 +1,11 @@
+---
+
+version: '2'
+settings:
+  conductor:
+    base: debian:jessie
+services:
+  rabbitmq-container:
+    from: debian:jessie
+    roles:
+    - rabbitmq-container

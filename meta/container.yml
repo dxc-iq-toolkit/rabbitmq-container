@@ -1,10 +1,10 @@
-rabbitmq:
-  image: centos:7
-  ports:
-    - 5672:5672
-  environment:
-    RABBITMQ_DEFAULT_USER: rabbitmq
-    RABBITMQ_GROUP: rabbitmq
-    RABBITMQ_DEFAULT_VHOST: my_vhost
-    RABBITMQ_NODE_PORT: 5672
-  command: ['/usr/bin/dumb-init','rabbitmq-server']
+from: centos:7
+ports:
+  - 5672:5672
+environment:
+  RABBITMQ_DEFAULT_USER: rabbitmq
+  RABBITMQ_GROUP: rabbitmq
+  RABBITMQ_DEFAULT_VHOST: my_vhost
+  RABBITMQ_NODE_PORT: "5672"
+entrypoint: ['/usr/local/bin/runrabbit']
+command: []
