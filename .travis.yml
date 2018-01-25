@@ -32,8 +32,8 @@ script:
 
   # Install the role into the project
   
-  - echo "Installing and testing git+https://github.com/${TRAVIS_PULL_REQUEST_SLUG:-TRAVIS_REPO_SLUG},${TRAVIS_PULL_REQUEST_SHA:-TRAVIS_COMMIT}"
-  - ansible-container install git+https://github.com/${TRAVIS_PULL_REQUEST_SLUG:-TRAVIS_REPO_SLUG},${TRAVIS_PULL_REQUEST_SHA:-TRAVIS_COMMIT}
+  - echo "Installing and testing git+https://github.com/${TRAVIS_PULL_REQUEST_SLUG:-$TRAVIS_REPO_SLUG},${TRAVIS_PULL_REQUEST_SHA:-$TRAVIS_COMMIT}"
+  - ansible-container install git+https://github.com/${TRAVIS_PULL_REQUEST_SLUG:-$TRAVIS_REPO_SLUG},${TRAVIS_PULL_REQUEST_SHA:-$TRAVIS_COMMIT}
 
   # Build the service image
   - ansible-container build --no-container-cache
