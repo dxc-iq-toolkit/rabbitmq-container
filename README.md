@@ -61,8 +61,3 @@ License
 -------
 
 MIT
-
-Author Information
-------------------
-
-Arun prasath - [@bingoarun](https://github.com/bingoarun)

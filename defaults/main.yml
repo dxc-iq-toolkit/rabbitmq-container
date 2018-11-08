@@ -3,6 +3,8 @@
 
 port: "{{ RABBITMQ_NODE_PORT | default(5672) }}"
 
+distribution: "jessie"
+
 rabbitmq_admin_user: "{{ RABBITMQ_ADMIN_USER | default('admin') }}"
 rabbitmq_admin_password: "{{ RABBITMQ_ADMIN_PASSWORD | default('ChangeMe!') }}"
 
