@@ -7,7 +7,7 @@
 
 - name: Add RabbitMQ to the sources list
   apt_repository: 
-    repo: "deb https://dl.bintray.com/rabbitmq/debian {{ distribution }} main"
+    repo: "deb https://dl.bintray.com/rabbitmq/debian testing main"
     update_cache: yes
     state: present
 
