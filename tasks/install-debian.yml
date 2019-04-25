@@ -2,7 +2,7 @@
 
 - name: Add the RabbitMQ public GPG key to the apt repo
   apt_key: url=https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
-           state=present
+           state=latest
 
 - name: Add RabbitMQ to the sources list
   apt_repository: 
