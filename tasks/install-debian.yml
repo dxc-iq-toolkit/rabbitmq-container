@@ -3,12 +3,13 @@
 - name: Add the RabbitMQ public GPG key to the apt repo
   apt_key: url=https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
            state=present
+           validate_certs: no
 
-- name: Add RabbitMQ to the sources list
-  apt_repository: 
-    repo: 'deb https://dl.bintray.com/rabbitmq/debian testing main'
-    update_cache: yes
-    state: present
+#- name: Add RabbitMQ to the sources list
+ # apt_repository: 
+  #  repo: 'deb https://dl.bintray.com/rabbitmq/debian {{ distribution }} main'
+   # update_cache: yes
+   # state: present
 
 - name: Install RabbitMQ server
   apt: 
