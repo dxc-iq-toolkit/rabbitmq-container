@@ -4,7 +4,8 @@
   apt_key: 
     url: https://www.rabbitmq.com/rabbitmq-release-signing-key.asc
     state: present
-           
+  validate_certs: false
+  register: _add_apt_key     
 
 - name: Add RabbitMQ to the sources list
   apt_repository: 
