@@ -4,12 +4,15 @@
   apt_key: 
     url: https://www.rabbitmq.com/rabbitmq-release-signing-key.asc
     state: present
-  validate_certs: false
-  register: _add_apt_key     
+    validate_certs: false
+  register: _add_apt_key
+  until: _add_apt_key is succeeded
+  retries: 5
+  delay: 2
 
 - name: Add RabbitMQ to the sources list
   apt_repository: 
-    repo: 'deb https://dl.bintray.com/rabbitmq/debian {{ distribution }} main'
+    repo: 'deb https://dl.bintray.com/rabbitmq/debian testing main'
     update_cache: yes
     state: present
 
