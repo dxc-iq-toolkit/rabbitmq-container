@@ -10,6 +10,9 @@
   retries: 5
   delay: 2
 
+- name: Check that HTTPS transport is available to APT
+  apt: name="apt-transport-https" state=present
+  
 - name: Add RabbitMQ to the sources list
   apt_repository: 
     repo: 'deb http://www.rabbitmq.com/debian/ testing main'
