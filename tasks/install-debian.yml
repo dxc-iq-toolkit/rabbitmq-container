@@ -1,6 +1,6 @@
 ---
 - name: Ensure that https transport is ready
-  apt: name=apt-transport-https state=present
+  apt: name=apt-transport-https update_cache=yes
     
 - name: Add the RabbitMQ public GPG key to the apt repo
   apt_key: 
