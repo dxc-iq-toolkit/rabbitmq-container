@@ -1,5 +1,7 @@
 ---
-
+- name: Ensure that https transport is ready
+    apt: name=apt-transport-https state=present
+    
 - name: Add the RabbitMQ public GPG key to the apt repo
   apt_key: 
     url: https://www.rabbitmq.com/rabbitmq-release-signing-key.asc
@@ -9,11 +11,6 @@
   until: _add_apt_key is succeeded
   retries: 5
   delay: 2
-
-- name: Check that HTTPS transport is available to APT
-  apt: 
-    name: apt-transport-https 
-    state: present
   
 - name: Add RabbitMQ to the sources list
   apt_repository: 
